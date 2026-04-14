@@ -1,0 +1,557 @@
+追加いただいたデータを含め、前回と同じレイアウト・デザインで全編を網羅したHTMLレポートを作成しました。後半の「日本版RTOへの具体的な輸入推奨ポイント」や「日本で注意すべき差異」の比較表も、分かりやすくスタイリングしています。
+
+以下のコードをコピーして `.html` ファイルとして保存し、ブラウザでご確認ください。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>東南アジアにおけるRent-to-Own（RTO）の実態リサーチ</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            margin-top: 40px;
+            padding-left: 15px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        h3 {
+            color: var(--accent-color);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f4f8;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background-color: #e8f4fd;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .warning-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffb300;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .country-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fafbfc;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        .formula {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🌏 東南アジアにおけるRent-to-Own（RTO）の実態リサーチ</h1>
+
+    <div class="highlight-box">
+        <strong>📊 全体像：東南アジア5カ国のRTO比較マップ</strong><br>
+        東南アジアではRTOが<strong>「住宅ローンに代わる第三の購入手段」として急速に普及しています。国ごとに成熟度・制度設計が大きく異なりますが、いずれも「銀行融資を受けられない層を購入者に転換する」</strong>という共通課題を解決しています。
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>国</th>
+                <th>RTO成熟度</th>
+                <th>主な推進主体</th>
+                <th>主なターゲット</th>
+                <th>賃貸→購入の転換率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>🇵🇭 フィリピン</td>
+                <td>★★★★★ 最も成熟</td>
+                <td>大手デベロッパー（SMDC, DMCI等）</td>
+                <td>中間所得層・OFW（海外就労者）</td>
+                <td>高い（業界標準として定着）</td>
+            </tr>
+            <tr>
+                <td>🇹🇭 タイ</td>
+                <td>★★★☆☆ 急成長中</td>
+                <td>不動産プラットフォーム＋デベロッパー</td>
+                <td>外国人居住者・ローン審査不合格者</td>
+                <td>成長中</td>
+            </tr>
+            <tr>
+                <td>🇲🇾 マレーシア</td>
+                <td>★★★★☆ 制度化済み</td>
+                <td>銀行（Maybank）＋州政府</td>
+                <td>初めての住宅購入者・中低所得層</td>
+                <td>制度的に高い</td>
+            </tr>
+            <tr>
+                <td>🇮🇩 インドネシア</td>
+                <td>★★☆☆☆ 黎明期</td>
+                <td>開発業者団体（Apersi）</td>
+                <td>インフォーマルセクター労働者</td>
+                <td>これから</td>
+            </tr>
+            <tr>
+                <td>🇸🇬 シンガポール</td>
+                <td>★☆☆☆☆ 間接的</td>
+                <td>政府（HDB）</td>
+                <td>公営住宅賃貸世帯</td>
+                <td>補助金型（RTOとは異なる）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="country-section">
+        <h2>1️⃣ 🇵🇭 フィリピン ─ RTOの最先進国</h2>
+        <p><strong>概要:</strong> フィリピンは東南アジアでRTOが最も深く根付いた市場です。大手デベロッパーが「Rent-to-Own」を公式の販売チャネルとして常設しており、特にマニラ首都圏のコンドミニアム市場では標準的な購入オプションとなっています。</p>
+        
+        <h3>🏢 事例①：DMCI Homes「HomeReady™」プログラム</h3>
+        <p>フィリピン有数の大手デベロッパーDMCI Homesが展開するRTO専用プログラムです。</p>
+        <table>
+            <tbody>
+                <tr><th>プログラム名</th><td>HomeReady™（ホームレディ）</td></tr>
+                <tr><th>対象物件</th><td>完成済み（Ready For Occupancy）コンドミニアム</td></tr>
+                <tr><th>1BR月額賃料</th><td>₱22,000/月（約5.7万円）</td></tr>
+                <tr><th>2BR月額賃料</th><td>₱26,000/月（約6.7万円）</td></tr>
+                <tr><th>賃貸期間</th><td>最大36ヶ月（3年間）</td></tr>
+                <tr><th>初期費用</th><td>1ヶ月分の前払い＋2ヶ月分の保証金</td></tr>
+                <tr><th>購入時の充当</th><td>賃貸期間中に支払った賃料が購入価格から差し引かれる</td></tr>
+                <tr><th>購入判断</th><td>賃貸期間終了後に購入するか否かを選択可能</td></tr>
+            </tbody>
+        </table>
+        <p><strong>💡 注目ポイント:</strong> DMCI Homesはこのプログラムを<strong>「試してから買う」</strong>と明確にマーケティングしており、従来の分割払い（In-house Financing）よりもハードルを下げた入口として位置づけています。</p>
+
+        <h3>🏢 事例②：Grand Land Inc.「Grand Residences Cebu」</h3>
+        <p>セブ島の大手デベロッパーGrand Land Inc.による具体的なRTOスキームです。</p>
+        <table>
+            <tbody>
+                <tr><th>物件名</th><td>Grand Residences Cebu（セブシティ・ITパーク近隣）</td></tr>
+                <tr><th>プラン①</th><td>22ヶ月契約：月額₱22,700 → 総額₱499,400が購入時に充当</td></tr>
+                <tr><th>プラン②</th><td>36ヶ月契約（フィリピンでも長期の部類）</td></tr>
+                <tr><th>販売価格例</th><td>Gross Selling Price：₱3,024,821（約790万円）</td></tr>
+                <tr><th>初期費用（Spot Payment）</th><td>₱105,868</td></tr>
+                <tr><th>22ヶ月賃料支払後の残額</th><td>₱2,419,552（賃料・Spot Paymentを差引）</td></tr>
+                <tr><th>購入しない場合</th><td>賃貸終了として退去可能</td></tr>
+            </tbody>
+        </table>
+        <p><strong>📐 具体的な計算式：</strong></p>
+        <div class="formula">
+残額 = 販売価格 ₱3,024,821
+      − Spot Payment ₱105,868
+      − 月額賃料 ₱22,700 × 22ヶ月（₱499,400）
+      ＝ ₱2,419,552（残額＝住宅ローンで対応）
+        </div>
+
+        <div class="highlight-box">
+            <strong>🇵🇭 フィリピンRTOの特徴まとめ</strong>
+            <ul>
+                <li><strong>デベロッパー主導型：</strong>銀行ではなく、デベロッパー自身がRTOを運営</li>
+                <li><strong>完成物件が対象：</strong>未完成物件のプレセールとは別枠で、完成済み物件のRTOが主流</li>
+                <li><strong>海外就労者（OFW）向け：</strong>フィリピン国外で働く家族が帰国前に物件を確保する手段として活用</li>
+                <li><strong>3年間の「お試し居住」</strong>が業界標準</li>
+                <li><strong>購入判断の柔軟性：</strong>強制力が弱く、購入しない場合は退去で完結</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="country-section">
+        <h2>2️⃣ 🇹🇭 タイ ─ 「ローン審査不合格」問題への解決策として急成長</h2>
+        <p><strong>概要:</strong> タイでは住宅ローンの審査が厳しく、申請者の約30〜40%が銀行に断られると言われています。また、外国人居住者（50万人以上がバンコクに在住）は原則として住宅ローンを組めません。この「融資ギャップ」を埋める手段としてRTOが急速に普及しています。</p>
+        
+        <h3>🏢 事例①：FazWaz ─ RTOプラットフォームのパイオニア</h3>
+        <p>不動産テックプラットフォームFazWazが、タイで初の本格的なRTO専用プログラムをパイロット展開しています。</p>
+        <table>
+            <tbody>
+                <tr><th>プラットフォーム名</th><td>FazWaz Rent-to-Own</td></tr>
+                <tr><th>対象エリア</th><td>バンコク、パタヤ、プーケット、チェンマイ</td></tr>
+                <tr><th>デポジット（Option Fee）</th><td>物件価格の20〜30%</td></tr>
+                <tr><th>月額支払い</th><td>市場賃料より若干高め（プレミアム分が購入充当）</td></tr>
+                <tr><th>契約期間</th><td>1〜5年（典型的には2〜3年）</td></tr>
+                <tr><th>購入価格</th><td>契約時に確定（ロック）</td></tr>
+                <tr><th>購入時</th><td>デポジット＋賃料プレミアム分を差し引いた残額を支払い</td></tr>
+                <tr><th>法的構造</th><td>タイ民商法上の「割賦購入契約（Hire-Purchase）」</td></tr>
+            </tbody>
+        </table>
+
+        <h3>🏢 事例②：Sena Development（バンコク）</h3>
+        <p>バンコクの上場デベロッパーSena Developmentが、完成済みコンドミニアム<strong>「PITI Sukhumvit 101」</strong>でRTO型の販売を展開しています。</p>
+
+        <h3>🏢 事例③：Laguna Phuket（プーケット）</h3>
+        <p>大規模リゾート開発を手がけるLaguna Groupが、プーケットのBang Taoエリアでインハウス・ファイナンシング型のRTOを提供しています。</p>
+
+        <div class="highlight-box">
+            <strong>🇹🇭 タイRTOの特徴まとめ</strong>
+            <ul>
+                <li><strong>外国人バイヤーが主要ターゲット：</strong>タイ人よりも外国人居住者の需要が大きい</li>
+                <li><strong>デベロッパーの在庫処分手段：</strong>値下げせずに売れ残り物件を動かす戦略</li>
+                <li><strong>法的根拠あり：</strong>タイ民商法のHire-Purchase（割賦購入）制度が法的枠組み</li>
+                <li><strong>49%ルール：</strong>外国人がコンドミニアムを所有できるのは建物全体の49%まで</li>
+                <li>3年超の賃貸契約は土地局での登記が必要</li>
+            </ul>
+        </div>
+        
+        <div class="warning-box" style="border-left-color: #e74c3c; background-color: #fdedec;">
+            <strong>🔥 御社の事業への示唆：</strong><br>
+            タイのモデルは<strong>「在庫を値下げせずに動かす」</strong>という発想がまさに御社の売れ残りリスク対策と一致します。「値段を下げる」のではなく「入口を広げる」という思想です。
+        </div>
+    </div>
+
+    <div class="country-section">
+        <h2>3️⃣ 🇲🇾 マレーシア ─ 銀行主導＋政府支援の最も制度化されたRTO</h2>
+        <p><strong>概要:</strong> マレーシアは東南アジアでRTOが最も制度化されている国です。民間銀行の商品と州政府のプログラムが並行して運営されており、法的・金融的なインフラが整備されています。</p>
+        
+        <h3>🏦 事例①：Maybank Islamic「HouzKEY」</h3>
+        <p>マレーシア最大手銀行Maybankのイスラム金融部門が運営する、東南アジア初の銀行主導型RTOです。</p>
+        <table>
+            <tbody>
+                <tr><th>プログラム名</th><td>HouzKEY（ハウズキー）</td></tr>
+                <tr><th>運営主体</th><td>Maybank Islamic Bhd</td></tr>
+                <tr><th>法的構造</th><td>シャリーア適合型リース・トゥ・オウン</td></tr>
+                <tr><th>頭金</th><td>不要（0%）</td></tr>
+                <tr><th>初期費用</th><td>3ヶ月分の保証金のみ</td></tr>
+                <tr><th>賃貸期間（初期）</th><td>5年間</td></tr>
+                <tr><th>最長期間</th><td>初期5年 ＋ 延長30年 ＝ 最長35年</td></tr>
+                <tr><th>参画デベロッパー</th><td>12社（EcoWorld, SP Setia, Mah Sing, Sime Darby Property, Gamuda Land等）</td></tr>
+                <tr><th>対象エリア</th><td>クランバレー（クアラルンプール近郊）中心、25開発プロジェクト</td></tr>
+                <tr><th>月額賃料例</th><td>RM1,620〜（約5.3万円〜）</td></tr>
+                <tr><th>購入選択</th><td>5年後に購入 or 継続賃貸 or 退去</td></tr>
+            </tbody>
+        </table>
+        
+        <div class="highlight-box">
+            <strong>💡 注目データ：</strong><br>
+            ローンチ後、関心を示した層の約70%が25〜34歳の若年層。マレーシアでは住宅価格が中位年収の4.4倍に達し「深刻な住宅取得困難」状態にあり、RTOが唯一の突破口となっています。
+        </div>
+
+        <h3>🏛️ 事例②：州政府によるRTOプログラム群</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>プログラム名</th>
+                    <th>州</th>
+                    <th>対象</th>
+                    <th>特徴</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Smart Sewa</td>
+                    <td>セランゴール州</td>
+                    <td>中低所得層</td>
+                    <td>賃貸2〜5年後、支払い賃料の30%を頭金に還元</td>
+                </tr>
+                <tr>
+                    <td>LPM RTO</td>
+                    <td>マラッカ州</td>
+                    <td>B40（低所得40%層）</td>
+                    <td>月額RM200〜300の超低額賃料</td>
+                </tr>
+                <tr>
+                    <td>Penang RTO</td>
+                    <td>ペナン州</td>
+                    <td>公務員・専門人材</td>
+                    <td>州政府の手頃な住宅ユニット対象</td>
+                </tr>
+                <tr>
+                    <td>Jauhar Prihatin</td>
+                    <td>ジョホール州</td>
+                    <td>M40＋B40層</td>
+                    <td>5年以内の住宅取得を支援</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <strong>🇲🇾 マレーシアRTOの特徴まとめ</strong>
+            <ul>
+                <li><strong>銀行が運営主体：</strong>デベロッパーではなく金融機関がRTOの仕組みを設計・運営</li>
+                <li>イスラム金融のスキームを活用（利子ではなくリース料として構成）</li>
+                <li><strong>政府が州レベルで制度化：</strong>複数の州がRTOを公式住宅政策として採用</li>
+                <li>Smart Sewa の「賃料30%還元」モデルは、御社のRTOスキームに直接参考になる</li>
+            </ul>
+        </div>
+        
+        <div class="warning-box" style="border-left-color: #e74c3c; background-color: #fdedec;">
+            <strong>🔥 御社の事業への示唆：</strong><br>
+            マレーシアのSmart Sewa（賃料30%還元）は、御社が計画するRTOの「賃料プレミアム分を頭金に充当」する設計とほぼ同じ発想です。しかもマレーシアでは州政府が公式に認めている制度であり、「海外で実績のある仕組み」という説得力を金融機関や購入検討者への説明に使えます。
+        </div>
+    </div>
+
+    <div class="country-section">
+        <h2>4️⃣ 🇮🇩 インドネシア ─ 黎明期：業界団体が政府に制度化を提案中</h2>
+        <p><strong>概要:</strong> インドネシアでは2025年5月、住宅開発業者の全国団体<strong>Apersi（全インドネシア住宅・居住地開発者協会）</strong>が国会に対し、インフォーマルセクター労働者向けのRTO制度を正式に提案しました。</p>
+        <table>
+            <tbody>
+                <tr><th>提案主体</th><td>Apersi（住宅開発者協会）、Asprumnas（住宅販売者協会）</td></tr>
+                <tr><th>ターゲット</th><td>銀行融資を受けられないインフォーマル労働者（屋台経営者、行商人等）</td></tr>
+                <tr><th>課題</th><td>収入が不安定な層は銀行の信用審査（SLIK/OJK）を通過できない</td></tr>
+                <tr><th>RTOの狙い</th><td>数年間の賃料支払い実績で「信用力」を証明し、住宅取得へ移行</td></tr>
+                <tr><th>政策動向</th><td>政府は2025年に補助住宅の所得上限を引き上げ、中間層も対象に拡大</td></tr>
+            </tbody>
+        </table>
+        <div class="highlight-box">
+            <strong>💡 注目ポイント：</strong><br>
+            「賃料支払い実績＝信用力の証明」という発想は、日本の地方都市でRTOを導入する際にも使えます。住宅ローンの本審査前に「きちんと払える」実績を金融機関に示すことで、審査通過率を上げる補助的な効果が期待できます。
+        </div>
+    </div>
+
+    <div class="country-section">
+        <h2>5️⃣ 🇸🇬 シンガポール ─ RTOではないが「賃貸→持ち家」の政府支援モデル</h2>
+        <p><strong>概要:</strong> シンガポールには伝統的なRTOは存在しませんが、公営住宅（HDB）の賃貸居住者を持ち家取得へ導くFresh Start Housing Schemeが存在します。</p>
+        <table>
+            <tbody>
+                <tr><th>プログラム名</th><td>Fresh Start Housing Scheme</td></tr>
+                <tr><th>対象</th><td>公営住宅（HDB）の賃貸世帯で18歳以下の子供がいる家庭</td></tr>
+                <tr><th>助成金</th><td><strong>S$50,000（約550万円）</strong>の住宅取得助成金</td></tr>
+                <tr><th>購入対象</th><td>2-Room Flexi（短縮リース：45〜65年）</td></tr>
+                <tr><th>追加支援</th><td>ComLink+プログラムでマイルストーン達成型の報奨金（最大S$30,000）</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>📐 東南アジアRTOモデルの構造比較</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>比較軸</th>
+                <th>🇵🇭 フィリピン</th>
+                <th>🇹🇭 タイ</th>
+                <th>🇲🇾 マレーシア</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>初期費用</strong></td>
+                <td>予約金₱20,000〜 ＋ 保証金</td>
+                <td>物件価格の20〜30%</td>
+                <td>0%（HouzKEY）/ 5%（一般）</td>
+            </tr>
+            <tr>
+                <td><strong>賃貸期間</strong></td>
+                <td>22〜36ヶ月</td>
+                <td>1〜5年</td>
+                <td>2〜5年（最長35年）</td>
+            </tr>
+            <tr>
+                <td><strong>賃料の購入充当</strong></td>
+                <td>✅ 全額（Spot Payment含む）</td>
+                <td>✅ プレミアム分</td>
+                <td>✅ 30%（Smart Sewa）</td>
+            </tr>
+            <tr>
+                <td><strong>購入価格の決定</strong></td>
+                <td>契約時に確定</td>
+                <td>契約時に確定</td>
+                <td>契約時に確定</td>
+            </tr>
+            <tr>
+                <td><strong>購入しない場合</strong></td>
+                <td>退去のみ（違約金なし）</td>
+                <td>デポジット没収</td>
+                <td>保証金は返還 or 没収（条件次第）</td>
+            </tr>
+            <tr>
+                <td><strong>法的根拠</strong></td>
+                <td>民法上の賃貸＋売買予約</td>
+                <td>Hire-Purchase法</td>
+                <td>イスラム金融法（Ijarah）</td>
+            </tr>
+            <tr>
+                <td><strong>主な推進者</strong></td>
+                <td>デベロッパー</td>
+                <td>デベロッパー＋プラットフォーム</td>
+                <td>銀行＋州政府</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="country-section" style="border-color: var(--accent-color); border-width: 2px;">
+        <h2>🎯 御社の日本版RTOへの具体的な「輸入推奨ポイント」</h2>
+        <p>東南アジア各国の実態を踏まえ、御社の雪国分譲マンション事業に直接応用できる要素を抽出します。</p>
+
+        <h3>✅ 採用すべき要素</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>参考元</th>
+                    <th>手法</th>
+                    <th>御社への応用案</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>🇵🇭 DMCI HomeReady</strong></td>
+                    <td>「試してから買う」のブランディング</td>
+                    <td>「雪のない冬を体験してから決める」というメッセージに直結</td>
+                </tr>
+                <tr>
+                    <td><strong>🇵🇭 Grand Residences</strong></td>
+                    <td>22〜36ヶ月の賃貸期間設定</td>
+                    <td>御社も<strong>24ヶ月（冬2回体験）</strong>が最適。1回目の冬で感動、2回目で確信</td>
+                </tr>
+                <tr>
+                    <td><strong>🇹🇭 FazWaz</strong></td>
+                    <td>購入価格の契約時ロック</td>
+                    <td>値上がりリスクからの保護は購入動機を強化する</td>
+                </tr>
+                <tr>
+                    <td><strong>🇹🇭 タイ全般</strong></td>
+                    <td>「在庫を値下げせずに動かす」発想</td>
+                    <td>売れ残り＝値下げではなく、売れ残り＝RTO投入で購入転換</td>
+                </tr>
+                <tr>
+                    <td><strong>🇲🇾 Smart Sewa</strong></td>
+                    <td>賃料の30%を頭金に還元</td>
+                    <td>御社の「プレミアム分充当」と同じ発想。<strong>「マレーシア政府公認の仕組み」</strong>と説明すれば信頼性UP</td>
+                </tr>
+                <tr>
+                    <td><strong>🇲🇾 HouzKEY</strong></td>
+                    <td>金融機関が運営主体となるRTO</td>
+                    <td>地元金融機関と共同でRTOスキームを構築する際のモデルケース</td>
+                </tr>
+                <tr>
+                    <td><strong>🇮🇩 Apersi提案</strong></td>
+                    <td>賃料支払い実績＝信用力証明</td>
+                    <td>RTO期間中の支払い実績を住宅ローン審査時の「追加的な信用材料」として金融機関に提示</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>⚠️ 日本で注意すべき差異</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>東南アジアの前提</th>
+                    <th>日本の現実</th>
+                    <th>対応策</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>住宅ローンが組めない層が多い</td>
+                    <td>日本は住宅ローンが比較的組みやすい</td>
+                    <td>RTOの訴求点を「ローンが組めない」から<strong>「買う前に体験したい」に転換</strong></td>
+                </tr>
+                <tr>
+                    <td>物件価格が安い（数百万円〜）</td>
+                    <td>物件価格が3,000〜5,000万円と高い</td>
+                    <td>オプション料を低め（2〜3%）に設定し、心理的ハードルを下げる</td>
+                </tr>
+                <tr>
+                    <td>外国人が主要ターゲット（タイ）</td>
+                    <td>日本は地元の日本人がターゲット</td>
+                    <td>「マンション生活に慣れていない地方の戸建て住民」に焦点</td>
+                </tr>
+                <tr>
+                    <td>法的整備が進んでいる国がある</td>
+                    <td>日本ではRTOの判例がまだ少ない</td>
+                    <td>賃貸借契約＋売買予約契約の二本立てで法的安全性を確保</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>📊 結論：東南アジアの実績が御社のRTO導入を裏付ける</h2>
+    <p>東南アジア5カ国のリサーチから得られた最も重要な知見は以下の3点です。</p>
+    <ol>
+        <li>
+            <strong>「RTOは途上国だけの手法」ではない</strong><br>
+            マレーシアでは国内最大手銀行MaybankがRTOを商品化し、12の大手デベロッパーが参画しています。フィリピンでは上場企業DMCIが公式プログラムとして運営。タイでは法的根拠（Hire-Purchase法）も整備済みです。RTOは金融インフラが整った市場でこそ威力を発揮する仕組みです。
+        </li>
+        <li>
+            <strong>「体験してから買う」は世界共通の購買心理に合致する</strong><br>
+            フィリピンのDMCI HomeReadyが<strong>「試してから買う」をキャッチコピーにしているように、高額商品の購入前体験はグローバルに有効な戦略です。御社の場合、「雪のない冬の体験」</strong>という他の地域では絶対に再現できない圧倒的な差別化要素があります。
+        </li>
+        <li>
+            <strong>RTO期間の設計は「冬2回」＝24ヶ月がベスト</strong><br>
+            フィリピンの22〜36ヶ月、タイの1〜5年という実績を踏まえると、御社の場合は<strong>24ヶ月（2シーズンの冬を体験）</strong>が最も合理的です。
+        </li>
+    </ol>
+</div>
+
+</body>
+</html>
+```
