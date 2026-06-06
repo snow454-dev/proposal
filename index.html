@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>有限会社ながぬま | 秋田の溶接・金属加工専門</title>
+  <meta name="description" content="創業65年以上。溶接を中心とした金属加工のプロフェッショナル集団。材料調達から品質保証まで一貫対応。秋田県で技術を武器に未来へ挑戦し続けます。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:   #0A0C10;
+      --navy:    #111827;
+      --orange:  #F97316;
+      --orange2: #EA580C;
+      --silver:  #9CA3AF;
+      --light:   #F9FAFB;
+      --white:   #FFFFFF;
+      --border:  #E5E7EB;
+      --radius:  8px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #1F2937;
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ───────────────────────────── */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      transition: background .35s, box-shadow .35s;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    #header.scrolled {
+      background: rgba(10,12,16,.96);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 20px rgba(0,0,0,.5);
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      text-decoration: none;
+    }
+    .logo-ja {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .05em;
+    }
+    .logo-en {
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      color: var(--orange);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    nav { display: flex; align-items: center; gap: 8px; }
+    nav a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 4px;
+      transition: color .2s, background .2s;
+      letter-spacing: .05em;
+    }
+    nav a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange) !important;
+      color: var(--white) !important;
+      font-weight: 700 !important;
+      padding: 8px 20px !important;
+      border-radius: 4px;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--orange2) !important; color: var(--white) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: .3s; }
+
+    /* ── HERO ─────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      filter: brightness(.45);
+      transform: scale(1.04);
+      animation: zoomOut 12s ease-out forwards;
+    }
+    @keyframes zoomOut { to { transform: scale(1); } }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,12,16,.75) 40%, rgba(249,115,22,.12) 100%);
+    }
+    .hero-content {
+      position: relative;
+      padding: 0 40px;
+      max-width: 900px;
+      animation: fadeUp .9s .2s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(249,115,22,.2);
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .4; transform: scale(1.6); }
+    }
+    .hero-h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+      letter-spacing: .04em;
+      margin-bottom: 16px;
+    }
+    .hero-h1 span { color: var(--orange); }
+    .hero-sub {
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: rgba(255,255,255,.75);
+      max-width: 540px;
+      margin-bottom: 44px;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 4px;
+      transition: background .2s, transform .2s;
+      letter-spacing: .05em;
+    }
+    .btn-primary:hover { background: var(--orange2); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid rgba(255,255,255,.6);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 32px;
+      border-radius: 4px;
+      transition: border-color .2s, background .2s, transform .2s;
+      letter-spacing: .05em;
+    }
+    .btn-outline:hover {
+      border-color: var(--orange);
+      background: rgba(249,115,22,.1);
+      transform: translateY(-2px);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.5);
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.5), transparent);
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── STATS BAR ────────────────────────── */
+    .stats-bar {
+      background: var(--orange);
+      padding: 28px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 48px;
+      border-right: 1px solid rgba(255,255,255,.3);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-num sup { font-size: 20px; }
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .1em;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* ── SECTION COMMON ───────────────────── */
+    section { padding: 100px 40px; }
+    .section-tag {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .section-h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(26px, 3.5vw, 44px);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .section-lead {
+      font-size: 15px;
+      color: #4B5563;
+      max-width: 600px;
+      line-height: 1.9;
+    }
+    .divider {
+      width: 48px; height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin: 16px 0 28px;
+    }
+    .container { max-width: 1160px; margin: 0 auto; }
+
+    /* ── ABOUT ────────────────────────────── */
+    #about { background: var(--light); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .about-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .6s;
+    }
+    .about-img-wrap:hover img { transform: scale(1.04); }
+    .about-img-badge {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+      font-size: 13px;
+    }
+    .about-img-badge strong { display: block; font-size: 26px; font-family: 'Oswald', sans-serif; }
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .pillar {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      background: var(--white);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--orange);
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pillar:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+    .pillar-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .pillar-title { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 4px; }
+    .pillar-desc { font-size: 13px; color: #6B7280; line-height: 1.7; }
+
+    /* ── SERVICES ─────────────────────────── */
+    #services { background: var(--navy); }
+    #services .section-h2 { color: var(--white); }
+    #services .section-lead { color: rgba(255,255,255,.65); max-width: 100%; }
+    .services-header {
+      max-width: 1160px;
+      margin: 0 auto 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .service-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: default;
+    }
+    .service-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(.5);
+      transition: filter .4s, transform .5s;
+    }
+    .service-card:hover img { filter: brightness(.35); transform: scale(1.05); }
+    .service-card-content {
+      position: absolute;
+      inset: 0;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .service-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: rgba(249,115,22,.3);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .service-name {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .service-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,.75);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s;
+    }
+    .service-card:hover .service-desc { max-height: 120px; }
+    .service-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s .1s;
+    }
+    .service-card:hover .service-tag-list { max-height: 60px; }
+    .stag {
+      background: rgba(249,115,22,.25);
+      border: 1px solid rgba(249,115,22,.5);
+      color: var(--orange);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    /* ── STRENGTHS ────────────────────────── */
+    #strengths { background: var(--white); }
+    .strengths-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1160px;
+      margin: 60px auto 0;
+    }
+    .strength-card {
+      text-align: center;
+      padding: 40px 24px;
+      border-radius: 12px;
+      background: var(--light);
+      transition: box-shadow .3s, transform .3s;
+    }
+    .strength-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.1); transform: translateY(-4px); }
+    .strength-icon {
+      width: 64px; height: 64px;
+      background: rgba(249,115,22,.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 20px;
+    }
+    .strength-title { font-weight: 700; font-size: 15px; color: var(--navy); margin-bottom: 10px; }
+    .strength-text { font-size: 13px; color: #6B7280; line-height: 1.8; }
+
+    /* ── RECRUIT ──────────────────────────── */
+    #recruit {
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    #recruit::before {
+      content: 'RECRUIT';
+      position: absolute;
+      top: -30px; right: -40px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 180px;
+      font-weight: 700;
+      color: rgba(255,255,255,.03);
+      letter-spacing: .05em;
+      pointer-events: none;
+      user-select: none;
+    }
+    #recruit .section-h2 { color: var(--white); }
+    #recruit .section-lead { color: rgba(255,255,255,.6); }
+    .recruit-header {
+      max-width: 1160px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+    .recruit-header .divider { margin: 16px auto 28px; }
+    .recruit-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1160px;
+      margin: 0 auto 80px;
+    }
+    .recruit-card {
+      background: #161B26;
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+    .recruit-card:hover { background: #1E2535; }
+    .recruit-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transition: transform .3s;
+    }
+    .recruit-card:hover::after { transform: scaleX(1); }
+    .rc-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: rgba(249,115,22,.2);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .rc-title { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 12px; letter-spacing: .05em; }
+    .rc-text { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.9; }
+    .rc-check {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .rc-check li {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,.65);
+    }
+    .rc-check li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Job Listings */
+    .job-section {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .job-section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .job-section-title::before {
+      content: '';
+      width: 4px; height: 24px;
+      background: var(--orange);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .job-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 60px; }
+    .job-card {
+      background: #161B26;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 12px;
+      padding: 32px;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+      text-decoration: none;
+      display: block;
+    }
+    .job-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(249,115,22,.15);
+    }
+    .job-type {
+      display: inline-block;
+      background: rgba(249,115,22,.15);
+      border: 1px solid rgba(249,115,22,.4);
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: .1em;
+      margin-bottom: 14px;
+    }
+    .job-title { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .job-desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.8; margin-bottom: 20px; }
+    .job-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+    .job-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(255,255,255,.5);
+    }
+    .job-meta-item span { color: rgba(255,255,255,.8); font-weight: 500; }
+    .job-arrow {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+
+    /* Recruit CTA */
+    .recruit-cta {
+      max-width: 1160px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange2) 100%);
+      border-radius: 16px;
+      padding: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .recruit-cta-text h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .recruit-cta-text p { font-size: 14px; color: rgba(255,255,255,.85); line-height: 1.8; }
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--orange2);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 4px;
+      transition: transform .2s, box-shadow .2s;
+      white-space: nowrap;
+      letter-spacing: .05em;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+
+    /* ── ENVIRONMENT ──────────────────────── */
+    #environment { background: var(--light); }
+    .env-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .env-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .env-img {
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .env-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .env-img:hover img { transform: scale(1.05); }
+    .env-img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/7;
+    }
+    .timeline { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+      padding-bottom: 28px;
+      position: relative;
+    }
+    .timeline-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .tl-icon {
+      width: 40px; height: 40px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .tl-title { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 4px; }
+    .tl-text { font-size: 13px; color: #6B7280; line-height: 1.7; }
+
+    /* ── NEWS ─────────────────────────────── */
+    #news { background: var(--white); }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1160px;
+      margin: 60px auto 0;
+    }
+    .news-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--light);
+      transition: box-shadow .3s, transform .3s;
+      text-decoration: none;
+    }
+    .news-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.1); transform: translateY(-4px); }
+    .news-img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    .news-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .news-card:hover .news-img img { transform: scale(1.05); }
+    .news-body { padding: 24px; }
+    .news-cat {
+      display: inline-block;
+      background: rgba(249,115,22,.12);
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 4px;
+      letter-spacing: .1em;
+      margin-bottom: 10px;
+    }
+    .news-title { font-weight: 700; font-size: 14px; color: var(--navy); line-height: 1.6; margin-bottom: 8px; }
+    .news-date { font-size: 12px; color: var(--silver); }
+
+    /* ── CONTACT ──────────────────────────── */
+    #contact {
+      background: var(--navy);
+      text-align: center;
+    }
+    #contact .section-h2 { color: var(--white); }
+    #contact .section-lead { color: rgba(255,255,255,.65); margin: 0 auto; }
+    #contact .divider { margin: 16px auto 28px; }
+    .locations {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1160px;
+      margin: 60px auto 60px;
+      text-align: left;
+    }
+    .location-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      padding: 32px;
+      transition: border-color .3s, background .3s;
+    }
+    .location-card:hover {
+      border-color: var(--orange);
+      background: rgba(249,115,22,.07);
+    }
+    .loc-icon { font-size: 24px; margin-bottom: 16px; }
+    .loc-name { font-weight: 700; font-size: 16px; color: var(--white); margin-bottom: 12px; }
+    .loc-addr { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.8; margin-bottom: 8px; }
+    .loc-tel { font-family: 'Oswald', sans-serif; font-size: 20px; color: var(--orange); letter-spacing: .05em; }
+    .contact-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ───────────────────────────── */
+    footer {
+      background: var(--black);
+      padding: 60px 40px 40px;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-brand .logo-ja { font-size: 22px; }
+    .footer-tagline {
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      margin-top: 12px;
+      line-height: 1.8;
+    }
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,.4);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-bottom {
+      max-width: 1160px;
+      margin: 32px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.3); }
+    .sns-links { display: flex; gap: 12px; }
+    .sns-link {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: 15px;
+      transition: background .2s, color .2s;
+    }
+    .sns-link:hover { background: var(--orange); color: var(--white); }
+
+    /* ── SCROLL-TO-TOP ────────────────────── */
+    #scrollTop {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 48px; height: 48px;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .3s, transform .3s, background .2s;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #scrollTop.visible { opacity: 1; transform: translateY(0); }
+    #scrollTop:hover { background: var(--orange2); }
+
+    /* ── MOBILE ───────────────────────────── */
+    @media (max-width: 900px) {
+      section { padding: 72px 24px; }
+      #header { padding: 0 24px; }
+      nav a:not(.nav-cta) { display: none; }
+      .hamburger { display: flex; }
+      .hero-content { padding: 0 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .services-header { flex-direction: column; }
+      .strengths-grid { grid-template-columns: 1fr 1fr; }
+      .recruit-cards { grid-template-columns: 1fr; gap: 2px; }
+      .job-cards { grid-template-columns: 1fr; }
+      .recruit-cta { flex-direction: column; }
+      .env-grid { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .locations { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .stat-item { padding: 0 24px; }
+      .stats-bar { padding: 20px 24px; }
+      .footer-inner { gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .strengths-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .stat-item { padding: 12px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); }
+      .stat-item:last-child { border-bottom: none; }
+      .stats-bar { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─────────── HEADER ─────────── -->
+<header id="header">
+  <a href="#" class="logo">
+    <span class="logo-ja">有限会社 ながぬま</span>
+    <span class="logo-en">Naganuma Metal Works · Est. 1959</span>
+  </a>
+  <nav>
+    <a href="#about">会社概要</a>
+    <a href="#services">事業内容</a>
+    <a href="#strengths">強み</a>
+    <a href="#recruit">採用情報</a>
+    <a href="#news">ニュース</a>
+    <a href="#contact" class="nav-cta">お問い合わせ</a>
+  </nav>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ─────────── HERO ─────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Since 1959 · Akita, Japan</div>
+    <h1 class="hero-h1">
+      技術を<span>武器</span>に<br>未来へ挑戦する
+    </h1>
+    <p class="hero-sub">
+      溶接・金属加工のプロフェッショナル集団として、<br>
+      材料調達から品質保証まで一貫対応。<br>
+      職人の誇りと先端技術で、お客様の期待を超える価値を届けます。
+    </p>
+    <div class="hero-btns">
+      <a href="#recruit" class="btn-primary">採用情報を見る →</a>
+      <a href="#services" class="btn-outline">私たちの技術</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ─────────── STATS BAR ─────────── -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num"><span class="count" data-target="65">0</span><sup>年+</sup></div>
+    <div class="stat-label">創業からの歴史</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num"><span class="count" data-target="100">0</span><sup>%</sup></div>
+    <div class="stat-label">単品受注生産対応</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num"><span class="count" data-target="3">0</span><sup>拠点</sup></div>
+    <div class="stat-label">秋田県内拠点数</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num"><span class="count" data-target="5">0</span><sup>工程</sup></div>
+    <div class="stat-label">材料調達→品質保証まで</div>
+  </div>
+</div>
+
+<!-- ─────────── ABOUT ─────────── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="金属加工現場" loading="lazy" />
+      <div class="about-img-badge">
+        <strong>1959</strong>創業
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">About Us</div>
+      <h2 class="section-h2">職人技術と<br>情熱が宿る現場</h2>
+      <div class="divider"></div>
+      <p class="section-lead">
+        有限会社ながぬまは1959年の創業以来、溶接を中心とした金属加工業を秋田県から発信し続けてきました。
+        単品受注生産に特化し、図面を読み解く高度な技術力と、60年以上積み上げたノウハウで多様なニーズに応えます。
+      </p>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🔥</div>
+          <div>
+            <div class="pillar-title">ものづくりを楽しむ</div>
+            <div class="pillar-desc">一品一品に全力を注ぎ、制作プロセスそのものに喜びを見出す文化を大切にしています。</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">⚙️</div>
+          <div>
+            <div class="pillar-title">ものづくりを極める</div>
+            <div class="pillar-desc">溶接・機械加工技術を絶えず磨き、JIS Q 9100等の認証取得でその品質を証明します。</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🌐</div>
+          <div>
+            <div class="pillar-title">ものづくりを役立てる</div>
+            <div class="pillar-desc">社会インフラから精密部品まで、幅広い産業分野の課題解決に技術で貢献します。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── SERVICES ─────────── -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag">Services</div>
+      <h2 class="section-h2">ワンストップで応える<br>6つの技術領域</h2>
+    </div>
+    <p class="section-lead">材料調達から完成品の品質保証まで、一社で完結する体制が私たちの最大の強みです。</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="溶接" loading="lazy" />
+      <div class="service-card-content">
+        <div class="service-num">01</div>
+        <div class="service-name">溶接加工</div>
+        <div class="service-desc">MIG・TIG・被覆アーク等多種の溶接工法に対応。高度な資格保有者が精密な接合を実現します。</div>
+        <div class="service-tag-list">
+          <span class="stag">MIG溶接</span>
+          <span class="stag">TIG溶接</span>
+          <span class="stag">特殊合金対応</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="レーザー加工" loading="lazy" />
+      <div class="service-card-content">
+        <div class="service-num">02</div>
+        <div class="service-name">レーザー加工</div>
+        <div class="service-desc">最新のファイバーレーザー設備により、複雑形状の精密切断・穴あけを高速かつ高精度で行います。</div>
+        <div class="service-tag-list">
+          <span class="stag">ファイバーレーザー</span>
+          <span class="stag">精密切断</span>
+          <span class="stag">薄板対応</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="機械加工" loading="lazy" />
+      <div class="service-card-content">
+        <div class="service-num">03</div>
+        <div class="service-name">機械加工</div>
+        <div class="service-desc">旋盤・フライス・マシニングセンタによる精密加工で、μm単位の寸法精度が要求される部品に対応。</div>
+        <div class="service-tag-list">
+          <span class="stag">CNC旋盤</span>
+          <span class="stag">マシニングセンタ</span>
+          <span class="stag">精密部品</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="板金加工" loading="lazy" />
+      <div class="service-card-content">
+        <div class="service-num">04</div>
+        <div class="service-name">板金加工</div>
+        <div class="service-desc">プレス・曲げ・せん断など、鋼板・ステンレス・アルミ等の多様な素材に対応した板金成形を行います。</div>
+        <div class="service-tag-list">
+          <span class="stag">プレス加工</span>
+          <span class="stag">ベンダー加工</span>
+          <span class="stag">ステンレス対応</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="材料調達" loading="lazy" />
+      <div class="service-card-content">
+        <div class="service-num">05</div>
+        <div class="service-name">材料調達</div>
+        <div class="service-desc">鋼材・アルミ・ステンレスなど豊富な材料在庫と強固な調達ネットワークでリードタイム短縮を支援。</div>
+        <div class="service-tag-list">
+          <span class="stag">鋼材在庫</span>
+          <span class="stag">特殊材料調達</span>
+          <span class="stag">短納期対応</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="品質保証" loading="lazy" />
+      <div class="service-card-content">
+        <div class="service-num">06</div>
+        <div class="service-name">品質保証</div>
+        <div class="service-desc">JIS Q 9100に準拠した品質マネジメントシステムのもと、全工程で厳格な検査・記録管理を実施。</div>
+        <div class="service-tag-list">
+          <span class="stag">JIS Q 9100</span>
+          <span class="stag">全数検査</span>
+          <span class="stag">トレーサビリティ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── STRENGTHS ─────────── -->
+<section id="strengths">
+  <div class="container" style="text-align:center;">
+    <div class="section-tag">Why Naganuma</div>
+    <h2 class="section-h2">選ばれ続ける4つの理由</h2>
+    <div class="divider" style="margin:16px auto 0;"></div>
+  </div>
+  <div class="strengths-grid">
+    <div class="strength-card">
+      <div class="strength-icon">🏆</div>
+      <div class="strength-title">65年以上の実績と信頼</div>
+      <div class="strength-text">1959年の創業から積み上げた圧倒的な経験とノウハウ。業界・官庁からの高い信頼を獲得しています。</div>
+    </div>
+    <div class="strength-card">
+      <div class="strength-icon">🎯</div>
+      <div class="strength-title">単品受注生産の専門性</div>
+      <div class="strength-text">量産品では対応困難な一品ものに特化。複雑な図面も読み解き、どんな要求にも応える技術集団です。</div>
+    </div>
+    <div class="strength-card">
+      <div class="strength-icon">🔗</div>
+      <div class="strength-title">一貫生産体制</div>
+      <div class="strength-text">材料調達から溶接・加工・品質保証まで自社一貫。窓口を一本化することでコスト・納期・品質を最適化します。</div>
+    </div>
+    <div class="strength-card">
+      <div class="strength-icon">🚀</div>
+      <div class="strength-title">DX推進で進化中</div>
+      <div class="strength-text">2025年TOHOKU DX賞受賞。最新のファイバーレーザー導入など、伝統の職人技術とデジタル革新を融合しています。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── RECRUIT ─────────── -->
+<section id="recruit">
+  <div class="recruit-header">
+    <div class="section-tag">Recruit</div>
+    <h2 class="section-h2">職人として、共に未来を創る</h2>
+    <div class="divider"></div>
+    <p class="section-lead" style="margin:0 auto;text-align:center;">
+      私たちは技術に情熱を燃やす仲間を求めています。あなたの「腕」と「熱量」が、ながぬまの未来を切り拓きます。
+    </p>
+  </div>
+
+  <!-- Why join cards -->
+  <div class="recruit-cards">
+    <div class="recruit-card">
+      <div class="rc-num">01</div>
+      <div class="rc-title">一品ものへの挑戦</div>
+      <div class="rc-text">同じ製品は二度とない単品受注生産。毎回が新しい挑戦であり、職人としての腕が常に試されます。その分、完成品を手渡す喜びは格別です。</div>
+      <ul class="rc-check">
+        <li>量産では得られない技術的達成感</li>
+        <li>図面解読力・段取り力が鍛えられる</li>
+        <li>難加工品への対応でスキルアップ</li>
+      </ul>
+    </div>
+    <div class="recruit-card">
+      <div class="rc-num">02</div>
+      <div class="rc-title">最新設備 × 職人の勘</div>
+      <div class="rc-text">ファイバーレーザー・高精度CNC等の最新設備を完備。職人の経験と感覚を最先端の機械が増幅する環境で、技術の限界に挑戦できます。</div>
+      <ul class="rc-check">
+        <li>最新ファイバーレーザー設備導入済み</li>
+        <li>DX推進・スマート工場化を推進中</li>
+        <li>設備提案・改善に積極的に参加可能</li>
+      </ul>
+    </div>
+    <div class="recruit-card">
+      <div class="rc-num">03</div>
+      <div class="rc-title">人が育つ組織文化</div>
+      <div class="rc-text">全社員が職人気質を持ち、互いの技術を尊重し教え合う文化があります。入社直後から先輩職人と肩を並べて働ける環境です。</div>
+      <ul class="rc-check">
+        <li>OJTによる丁寧な技術指導</li>
+        <li>資格取得支援制度あり</li>
+        <li>若手の意見・提案を積極採用</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Job listings -->
+  <div class="job-section">
+    <div class="job-section-title">募集職種</div>
+    <div class="job-cards">
+      <a href="#contact" class="job-card">
+        <span class="job-type">FULL TIME</span>
+        <div class="job-title">溶接工（経験者・未経験者）</div>
+        <div class="job-desc">MIG・TIG・被覆アーク溶接など各種溶接業務をお任せします。経験者はもちろん、意欲ある未経験者も積極採用。技術は一から丁寧に教えます。</div>
+        <div class="job-meta">
+          <div class="job-meta-item">📍 <span>秋田県内3拠点</span></div>
+          <div class="job-meta-item">💴 <span>経験・スキルを考慮</span></div>
+          <div class="job-meta-item">📅 <span>随時募集</span></div>
+        </div>
+        <div class="job-arrow">詳細を見る →</div>
+      </a>
+      <a href="#contact" class="job-card">
+        <span class="job-type">FULL TIME</span>
+        <div class="job-title">機械加工オペレーター（CNC・旋盤）</div>
+        <div class="job-desc">CNC旋盤・マシニングセンタを使用した精密部品の加工業務。プログラミングから段取り、仕上げ検査まで一連の工程を担当します。</div>
+        <div class="job-meta">
+          <div class="job-meta-item">📍 <span>本社工場（秋田市）</span></div>
+          <div class="job-meta-item">💴 <span>経験・スキルを考慮</span></div>
+          <div class="job-meta-item">📅 <span>随時募集</span></div>
+        </div>
+        <div class="job-arrow">詳細を見る →</div>
+      </a>
+      <a href="#contact" class="job-card">
+        <span class="job-type">FULL TIME / PART TIME</span>
+        <div class="job-title">板金・レーザー加工オペレーター</div>
+        <div class="job-desc">ファイバーレーザー・プレスブレーキ等を使用した板金加工業務。最新設備で精密加工に挑戦できます。正社員・パートいずれも相談可能。</div>
+        <div class="job-meta">
+          <div class="job-meta-item">📍 <span>秋田県内拠点</span></div>
+          <div class="job-meta-item">💴 <span>経験・スキルを考慮</span></div>
+          <div class="job-meta-item">📅 <span>随時募集</span></div>
+        </div>
+        <div class="job-arrow">詳細を見る →</div>
+      </a>
+      <a href="#contact" class="job-card">
+        <span class="job-type">SIDE JOB</span>
+        <div class="job-title">採用広報 副業メンバー（HP・SNS運用）</div>
+        <div class="job-desc">HP改修ディレクション、採用目的のSNS運用（企画・ライティング）、効果測定・改善をお任せします。製造業や採用に関心のある方歓迎。</div>
+        <div class="job-meta">
+          <div class="job-meta-item">💻 <span>フルリモート可</span></div>
+          <div class="job-meta-item">⏰ <span>週5〜10時間程度</span></div>
+          <div class="job-meta-item">📅 <span>随時募集</span></div>
+        </div>
+        <div class="job-arrow">詳細を見る →</div>
+      </a>
+    </div>
+
+    <!-- CTA -->
+    <div class="recruit-cta">
+      <div class="recruit-cta-text">
+        <h3>腕に自信があるなら、<br>ながぬまで挑戦を。</h3>
+        <p>
+          職種・経験不問でまずはお話しましょう。<br>
+          工場見学も随時受け付けています。お気軽にご連絡ください。
+        </p>
+      </div>
+      <a href="#contact" class="btn-white">採用について問い合わせる →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── ENVIRONMENT ─────────── -->
+<section id="environment">
+  <div class="env-grid">
+    <div class="env-images">
+      <div class="env-img">
+        <img src="https://images.unsplash.com/photo-1513828742140-ccaa28f3eda0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="工場内部" loading="lazy" />
+      </div>
+      <div class="env-img">
+        <img src="https://images.unsplash.com/photo-1532187643603-ba119ca4109e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="溶接作業" loading="lazy" />
+      </div>
+      <div class="env-img">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="チームミーティング" loading="lazy" />
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">Work Environment</div>
+      <h2 class="section-h2">入社から成長まで、<br>安心のサポート体制</h2>
+      <div class="divider"></div>
+      <p class="section-lead">技術を磨きたい方が力を発揮できるよう、環境と仕組みを整えています。</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-icon">🗓️</div>
+          <div>
+            <div class="tl-title">入社〜1ヶ月：現場理解・OJT</div>
+            <div class="tl-text">先輩職人と一緒に基本工程を体験。設備・材料・段取りの流れを身体で覚えます。</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-icon">⚒️</div>
+          <div>
+            <div class="tl-title">〜6ヶ月：単独作業デビュー</div>
+            <div class="tl-text">担当工程を任せてもらいながら、精度・スピードを高める実践トレーニングが続きます。</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-icon">📜</div>
+          <div>
+            <div class="tl-title">〜1年：資格取得チャレンジ</div>
+            <div class="tl-text">溶接技能者や機械加工技能士など、会社のサポートのもと国家資格・技能検定に挑戦できます。</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-icon">🌟</div>
+          <div>
+            <div class="tl-title">2年目以降：スペシャリストへ</div>
+            <div class="tl-text">難加工品・新工法へのチャレンジ、後輩指導など、キャリアの幅を自分でデザインできます。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── NEWS ─────────── -->
+<section id="news">
+  <div class="container">
+    <div class="section-tag">News</div>
+    <h2 class="section-h2">最新情報</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="news-grid">
+    <a href="#" class="news-card">
+      <div class="news-img">
+        <img src="https://images.unsplash.com/photo-1620912189865-1e8a33da4591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="DX賞" loading="lazy" />
+      </div>
+      <div class="news-body">
+        <span class="news-cat">受賞</span>
+        <div class="news-title">2025年 TOHOKU DX賞を受賞しました</div>
+        <div class="news-date">2025年3月</div>
+      </div>
+    </a>
+    <a href="#" class="news-card">
+      <div class="news-img">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ファイバーレーザー" loading="lazy" />
+      </div>
+      <div class="news-body">
+        <span class="news-cat">設備</span>
+        <div class="news-title">最新ファイバーレーザーシステムを新規導入しました</div>
+        <div class="news-date">2025年1月</div>
+      </div>
+    </a>
+    <a href="#" class="news-card">
+      <div class="news-img">
+        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="採用" loading="lazy" />
+      </div>
+      <div class="news-body">
+        <span class="news-cat">採用</span>
+        <div class="news-title">2026年度 新卒・中途採用の募集を開始しました</div>
+        <div class="news-date">2025年10月</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ─────────── CONTACT ─────────── -->
+<section id="contact">
+  <div class="section-tag">Contact</div>
+  <h2 class="section-h2">まずは、お気軽にどうぞ</h2>
+  <div class="divider"></div>
+  <p class="section-lead">ご発注のご相談から採用に関するお問い合わせまで、どのような内容でもお気軽にご連絡ください。</p>
+  <div class="locations">
+    <div class="location-card">
+      <div class="loc-icon">🏭</div>
+      <div class="loc-name">本社・第一工場</div>
+      <div class="loc-addr">〒010-XXXX<br>秋田県秋田市XX地区</div>
+      <div class="loc-tel">018-XXX-XXXX</div>
+    </div>
+    <div class="location-card">
+      <div class="loc-icon">⚙️</div>
+      <div class="loc-name">第二工場</div>
+      <div class="loc-addr">〒010-XXXX<br>秋田県秋田市XX地区</div>
+      <div class="loc-tel">018-XXX-XXXX</div>
+    </div>
+    <div class="location-card">
+      <div class="loc-icon">🔧</div>
+      <div class="loc-name">第三工場</div>
+      <div class="loc-addr">〒010-XXXX<br>秋田県秋田市XX地区</div>
+      <div class="loc-tel">018-XXX-XXXX</div>
+    </div>
+  </div>
+  <div class="contact-btns">
+    <a href="mailto:info@naganuma-akita.co.jp" class="btn-primary">メールでお問い合わせ →</a>
+    <a href="tel:018-XXX-XXXX" class="btn-outline">📞 お電話でのご相談</a>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <span class="logo-ja">有限会社 ながぬま</span>
+        <span class="logo-en">Naganuma Metal Works</span>
+      </a>
+      <p class="footer-tagline">
+        1959年創業。溶接・金属加工のプロフェッショナル集団として、<br>
+        秋田から日本のものづくりを支え続けています。
+      </p>
+    </div>
+    <div>
+      <div class="footer-col-title">メニュー</div>
+      <ul class="footer-links">
+        <li><a href="#about">会社概要</a></li>
+        <li><a href="#services">事業内容</a></li>
+        <li><a href="#strengths">私たちの強み</a></li>
+        <li><a href="#news">ニュース</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">採用情報</div>
+      <ul class="footer-links">
+        <li><a href="#recruit">採用情報トップ</a></li>
+        <li><a href="#recruit">溶接工募集</a></li>
+        <li><a href="#recruit">機械加工オペレーター</a></li>
+        <li><a href="#recruit">副業メンバー募集</a></li>
+        <li><a href="#environment">職場環境</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">お問い合わせ</div>
+      <ul class="footer-links">
+        <li><a href="#contact">お問い合わせ</a></li>
+        <li><a href="#contact">工場見学のご相談</a></li>
+        <li><a href="https://naganuma-akita.co.jp" target="_blank" rel="noopener">現在のサイト</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 有限会社ながぬま All Rights Reserved.</div>
+    <div class="sns-links">
+      <a href="#" class="sns-link" title="Twitter/X">𝕏</a>
+      <a href="#" class="sns-link" title="Instagram">📷</a>
+      <a href="#" class="sns-link" title="Facebook">f</a>
+      <a href="#" class="sns-link" title="LinkedIn">in</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─────────── SCROLL TOP ─────────── -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="トップへ">↑</button>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // Counter animation
+  const counters = document.querySelectorAll('.count');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = +entry.target.dataset.target;
+        const step = target / 60;
+        let current = 0;
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          entry.target.textContent = Math.floor(current);
+          if (current >= target) clearInterval(timer);
+        }, 20);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => observer.observe(c));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.service-card, .strength-card, .recruit-card, .job-card, .news-card, .location-card, .pillar');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, (i % 4) * 80);
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease, box-shadow .3s, border-color .3s, background .3s';
+    revealObs.observe(el);
+  });
+
+  // Hamburger (mobile)
+  function toggleMenu() {
+    document.querySelector('nav').classList.toggle('mobile-open');
+  }
+</script>
+</body>
+</html>
